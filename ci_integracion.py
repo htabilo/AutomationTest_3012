@@ -8,7 +8,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 def initialize_driver():
     options = ChromeOptions()
-    options.add_argument("--headless=new")    # ⭐ Necesario para GitHub Actions
+    #options.add_argument("--headless=new")    # ⭐ Necesario para GitHub Actions
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
 
@@ -18,7 +18,7 @@ def initialize_driver():
     return driver
 
 
-def login(driver):
+#def login(driver):
     driver.find_element(By.NAME, "username").send_keys("Admin")
     driver.find_element(By.NAME, "password").send_keys("admin123")
     driver.find_element(By.XPATH, '//button[@type="submit"]').click()
