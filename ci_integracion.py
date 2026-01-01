@@ -1,5 +1,7 @@
 import time
 import pytest
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver import Chrome, ChromeOptions
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -11,14 +13,14 @@ def initialize_driver():
     #options.add_argument("--headless=new")    # ⭐ Necesario para GitHub Actions
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
-
+    
     driver = Chrome(options=options)
     driver.get("https://opensource-demo.orangehrmlive.com/")
     driver.maximize_window()
     return driver
 
 
-#def login(driver):
+def login(driver):
     driver.find_element(By.NAME, "username").send_keys("Admin")
     driver.find_element(By.NAME, "password").send_keys("admin123")
     driver.find_element(By.XPATH, '//button[@type="submit"]').click()
